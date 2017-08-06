@@ -1,0 +1,20 @@
+{
+  "name": "testApiMagic",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "vien34",
+  "contributors": [],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "body-parser": "~1.10.1",
+    "cookie-session": "~1.1.0",
+    "express": "~4.11.0",
+    "typescript": "^2.2.1"
+  }
+}
