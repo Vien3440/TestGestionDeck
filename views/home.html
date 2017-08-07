@@ -8,15 +8,15 @@
 
     </head>
 
-    <body >
+    <body ng-controller="form">
         <h1>Choix carte</h1>
-        <form ng-controller="form">
+        <form >
             <input type="text" name="input" ng-model="titre"
                    ng-pattern="example.word" required ng-trim="false">
             <button type="submit" class="btn btn-primary" ng-click="valueInput()">Submit</button>
         </form>
         <div>
-            <table class="cards" ng-controller="table">
+            <table class="cards">
                 <tr>
                     <th>Nom carte</th>
                 </tr>
