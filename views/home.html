@@ -5,11 +5,14 @@
         <title>Ma todolist</title>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
+        <script src="http://localhost:8000/angular/research.js"></script>
+
 
     </head>
 
     <body ng-controller="form">
         <h1>Choix carte</h1>
+        <nav> <div>new deck</div></nav>
         <form >
             <input type="text" name="input" ng-model="titre"
                    ng-pattern="example.word" required ng-trim="false">
@@ -25,61 +28,5 @@
                 </tr>
             </table>
         </div>
-        <script>
-            angular.module('app', [])
-                    .controller('form', function ($scope, $http) {
-
-                        $scope.valueInput = function () {
-//                            alert($scope.titre);
-
-                            $http({
-                                method: 'GET',
-                                url: 'http://api.magicthegathering.io/v1/cards?name=' + $scope.titre
-                            }).then(function successCallback(response) {
-                                $listCards = response.data.cards;
-
-                                $scope.editListe($listCards);
-
-                            }, function errorCallback(response) {
-                                alert('error :(');
-                            });
-
-                        };
-
-                        $scope.editListe = function editListe($listCards) {
-
-                            $arrayNames = [];
-
-                            angular.forEach($listCards, function (value, key) {
-
-                                $flag = true;
-                                $nameCheck = value.name;
-                                angular.forEach($arrayNames, function (value, key) {
-                                    if (value.name === $nameCheck) {
-                                        $flag = false;
-                                    }
-
-                                });
-                                if ($flag === true) {
-                                    $arrayNames.push({
-                                        'name': value.name,
-                                        'imgid': value.multiverseid
-                                    });
-                                }
-
-
-                            });
-
-                            $scope.cards = $arrayNames;
-
-                        };
-
-
-                    });
-
-
-
-
-        </script>
     </body>
 </html>

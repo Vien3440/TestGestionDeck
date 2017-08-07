@@ -1,22 +1,15 @@
-var http = require('http');
-var fs = require('fs');
+
 var express = require('express');
-var bodyParser = require('body-parser'); // Charge le middleware de gestion des paramètres
+var app = express();
 
+app.get('/', function (req, res) {
+  
+//  Pour servir des fichiers statiques
+  app.use(express.static('web'));
+  // affiche la vue  
+  res.sendFile(__dirname +'/views/home.html');
+  
+});
 
-function onRequest(request, response) {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    fs.readFile('./views/home.html', null, function(error, data) {
-        if (error) {
-            response.writeHead(404);
-            response.write('File not found!');
-        } else {
-            response.write(data);
-        }
-        response.end();
-    });
-}
-
-http.createServer(onRequest).listen(8000);
-
-
+app.listen(8000, function () {
+});
