@@ -12,7 +12,7 @@
 
     <body ng-controller="form">
         <h1>Choix carte</h1>
-        <nav> <div>new deck</div></nav>
+        <nav> <div ng-if="$scope.sessionStorage.todolist" >new deck</div></nav>
         <form >
             <input type="text" name="input" ng-model="titre"
                    ng-pattern="example.word" required ng-trim="false">
@@ -28,5 +28,15 @@
                 </tr>
             </table>
         </div>
+        
+        
+         <form action="/todo/ajouter/" method="post">
+            <p>
+                <label for="newtodo">Que dois-je faire ?</label>
+                <input type="text" name="newtodo" id="newtodo" autofocus />
+                <input type="submit" />
+            </p>
+        </form>
+        
     </body>
 </html>
