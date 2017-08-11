@@ -14,15 +14,16 @@ app.use(session({secret: 'todotopsecret'}))
 
 
 
-        .get('/add/session/deck', function (req, res) {
+        .get('/create/session/deck', function (req, res) {
             /* S'il n'y a pas de deckList dans la session,
              on en crée une vide sous forme d'array */
 
             if (typeof (req.session.deckList) == 'undefined') {
                 req.session.deckList = [];
+                res.send(req.session.deckList);
             }
 
-            res.redirect('/');
+            
         })
 
         /* On ajoute une catre à la list */
@@ -39,6 +40,15 @@ app.use(session({secret: 'todotopsecret'}))
             delete req.session.deckList;
 
             res.redirect('/');
+        })
+        
+         .get('/cheeck/session', function (req, res) {
+           if (typeof (req.session.deckList) == 'undefined') {
+               res.send('sessionOff')
+                
+            }else{ res.send('sessionOn')}
+            
+           
         });
         
         

@@ -1,10 +1,12 @@
+           $app = angular.module('app', []);
+           
+                    $app.controller('form', function ($scope, $http) {
 
-            angular.module('app', [])
-                    .controller('form', function ($scope, $http) {
 
-                        $scope.valueInput = function () {
+
+                        $scope.valueInput = function valueInput (){
 //                            alert($scope.titre);
-
+// $scope.cheeckSession();
                             $http({
                                 method: 'GET',
                                 url: 'http://api.magicthegathering.io/v1/cards?name=' + $scope.titre
@@ -16,7 +18,7 @@
                             }, function errorCallback(response) {
                                 alert('error :(');
                             });
-
+                           
                         };
 
                         $scope.editListe = function editListe($listCards) {
@@ -49,5 +51,3 @@
 
 
                     });
-
-
