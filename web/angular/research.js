@@ -9,7 +9,7 @@
 // $scope.cheeckSession();
                             $http({
                                 method: 'GET',
-                                url: 'http://api.magicthegathering.io/v1/cards?name=' + $scope.titre
+                                url: 'http://api.magicthegathering.io/v1/cards?name=' + $scope.titre + "&language=french"
                             }).then(function successCallback(response) {
                                 $listCards = response.data.cards;
 
@@ -36,8 +36,22 @@
 
                                 });
                                 if ($flag === true) {
+                                    
+                                     angular.forEach(value.foreignNames , function (value, key) {
+                                  
+                                  if (value.language === "French" ){
+                                       localName =  value.name ;
+                                       
+                                     
+                                  } ;
+                              });  
+                                
+                                    
                                     $arrayNames.push({
-                                        'name': value.name,
+                                        
+                                      
+                                        
+                                        'name': localName ,
                                         'imgid': value.multiverseid
                                     });
                                 }
@@ -48,6 +62,9 @@
                             $scope.cards = $arrayNames;
 
                         };
+                        
+                        
+                     
 
 
                     });
