@@ -27,34 +27,31 @@
 
                             angular.forEach($listCards, function (value, key) {
 
-                                $flag = true;
-                                $nameCheck = value.name;
-                                angular.forEach($arrayNames, function (value, key) {
-                                    if (value.name === $nameCheck) {
-                                        $flag = false;
-                                    }
-
-                                });
-                                if ($flag === true) {
-                                    
+                           
+                           
+                                    /*Recherche Fr */
                                      angular.forEach(value.foreignNames , function (value, key) {
-                                  
-                                  if (value.language === "French" ){
-                                       localName =  value.name ;
-                                       
+                                  boolImg = value.hasOwnProperty('imageUrl');
+                                  if (value.language === "French" && boolImg === true ){
+                                      
+                                            localName =  value.name ;
+                                            localImg = value.imageUrl ; 
                                      
-                                  } ;
-                              });  
-                                
                                     
+                                                 
                                     $arrayNames.push({
                                         
                                       
                                         
                                         'name': localName ,
-                                        'imgid': value.multiverseid
-                                    });
-                                }
+                                        'imgid': localImg
+                                    });                       
+                                  }
+                                  
+                              });  
+                                
+                              
+                              
 
 
                             });
