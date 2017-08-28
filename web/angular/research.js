@@ -9,7 +9,7 @@
 // $scope.cheeckSession();
                             $http({
                                 method: 'GET',
-                                url: 'http://api.magicthegathering.io/v1/cards?name=' + $scope.titre + "&language=french"
+                                url: 'https://api.magicthegathering.io/v1/cards?name=' + $scope.titre + "&language=french"
                             }).then(function successCallback(response) {
                                 $listCards = response.data.cards;
 
