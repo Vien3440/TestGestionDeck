@@ -1,13 +1,13 @@
 $app = angular.module('app', []);
            
-                    $app.controller('form', function ($scope, $https) {
+                    $app.controller('form', function ($scope, $http) {
 
 
 
                         $scope.valueInput = function valueInput (){
 //                            alert($scope.titre);
 // $scope.cheeckSession();
-                            $https({
+                            $http({
                                 method: 'GET',
                                 url: 'https://api.magicthegathering.io/v1/cards?name=' + $scope.titre + "&language=french"
                             }).then(function successCallback(response) {
