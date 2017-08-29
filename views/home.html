@@ -22,17 +22,20 @@
             <input type="text" name="input" ng-model="titre" placeholder="Nom de la carte " >
             <button type="submit" class="btn btn-primary" ng-click="valueInput()">Submit</button>
         </form>
-        <div>
-            <h3>Resulta Recherche: </h3>
-            <table class="cards">
-                <tr>
-                    <th>Nom </th>
-                </tr>
-                <tr ng-repeat="card in cards track by $index">
-                    <td id="{{card.name}}">{{card.name}} <button class="btnDetail" >Details</button> <button class="btnAdd">Ajouter</button> </td>
-                </tr>
-            </table>
-        </div>
+         <div>
+                 <h3>Resulta Recherche: </h3>
+                 <table class="cards">
+                     <tr>
+                         <th>Nom </th>
+                         <th>Img </th>
+                     </tr>
+                     <tr ng-repeat="card in cards track by $index">
+                        <td id="{{card.name}}">{{card.name}} <button class="btnDetail" >Details</button> <button class="btnAdd">Ajouter</button> </td>
+                         <td><img src="{{card.imgid}}"> </td>
+ 
+                     </tr>
+                 </table>
+            </div>
         </div>
   
             
