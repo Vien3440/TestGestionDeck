@@ -1,6 +1,6 @@
 $app = angular.module('app');
 
-$app.controller('deckSession', function ($scope, $https) {
+$app.controller('deckSession', function ($scope, $http) {
 
     $path = "https://mdmagic.herokuapp.com";
 
