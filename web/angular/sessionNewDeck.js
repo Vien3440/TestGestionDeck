@@ -3,12 +3,13 @@ $app = angular.module('app');
 $app.controller('deckSession', function ($scope, $http) {
 
     $path = "https://mdmagic.herokuapp.com";
+//    $path = "http://localhost:5000";
 
     $scope.cheeckDeckSession = function cheeckDeckSession() {
 
         $http({
             method: 'GET',
-            url: $path + "/cheeck/session"
+            url: $path + "/cheeck/decksession"
         })
                 .then(function (response) {
                     // success
@@ -26,7 +27,7 @@ $app.controller('deckSession', function ($scope, $http) {
   $scope.cheeckDeckSession();
         $http({
             method: 'GET',
-            url: $path + "/create/session/deck"
+            url: $path + "/create/decksession"
         })
 
                 .then(function (response) {
@@ -37,4 +38,7 @@ $app.controller('deckSession', function ($scope, $http) {
          
                 });
     };
+    
+
 });
+

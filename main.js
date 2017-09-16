@@ -14,7 +14,7 @@ app.use(session({secret: 'todotopsecret'}))
 
 
 
-        .get('/create/session/deck', function (req, res) {
+        .get('/create/decksession', function (req, res) {
             /* S'il n'y a pas de deckList dans la session,
              on en crée une vide sous forme d'array */
 
@@ -27,22 +27,27 @@ app.use(session({secret: 'todotopsecret'}))
         })
 
         /* On ajoute une catre à la list */
-        .get('/session/newDeck/ajouter/carte', function (req, res) {
-
+        .post('/add/deckSession/carte', function (req, res) {
+           nameCarte = req.query.name ;
+           imgCarte = req.query.img ;
+           nbrCarte = req.query.nbr ;
+           console.log(nbrCarte+imgCarte+nameCarte);
             req.session.deckList.push('pikatchu');
-
-            res.redirect('/');
+           res.send('sessionOn');
         })
 
 
 
-        .get('/session/Deck/supr', function (req, res) {
+        .get('/remove/deckSession', function (req, res) {
             delete req.session.deckList;
 
             res.redirect('/');
         })
         
-         .get('/cheeck/session', function (req, res) {
+        
+        
+        
+         .get('/cheeck/deckSession', function (req, res) {
            if (typeof (req.session.deckList) == 'undefined') {
                res.send('sessionOff')
                 
