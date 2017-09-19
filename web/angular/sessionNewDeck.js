@@ -2,8 +2,8 @@ $app = angular.module('app');
 
 $app.controller('deckSession', function ($scope, $http) {
 
-    $path = "https://mdmagic.herokuapp.com";
-//    $path = "http://localhost:5000";
+//    $path = "https://mdmagic.herokuapp.com";
+    $path = "http://localhost:5000";
 
     $scope.cheeckDeckSession = function cheeckDeckSession() {
 
