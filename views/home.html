@@ -121,16 +121,38 @@
                  <h3>Resulta Recherche: </h3>
                  <table class="cards">
                      <tr>
+                         <th>Action </th>
                          <th>Nom </th>
                          <th>Img </th>
                      </tr>
                      <tr ng-repeat="card in cards track by $index">
-                         <td id="{{card.name}}">{{card.name}} <button class="btnDetail" >Details</button> <button class="btnAdd" ng-click="addCarteDeckSession()">Ajouter</button> </td>
-                         <td><img src="{{card.imgid}}"></td>
- 
+                         <td><button class="btnAdd" ng-click="addCarteDeckSession()">Ajouter</button></td>
+                         <td id="{{card.name}}" class="cardName" >{{card.name}}</td>
+                         <td><img id="{{card.img}}" class="cardImg" src="{{card.imgid}}" alt="Img Card {{card.name}}"></td>
+                         
                      </tr>
                  </table>
             </div>
+        <form action="/add/deckSession/carte" method="post">
+            
+               <input type="text"
+              ng-value=$formDeckName
+              id="formDeckName"
+              name="name">
+               
+              <input type="text"
+              ng-value=$formDeckImgid
+              id="formDeckImg"
+              name="img">
+                  
+              <input type="number"
+              ng-value="name"
+              id="formDeckNbr"
+              name="nbr">  
+                 
+        
+            <button type="submit">Submit</button>
+        </form>
         </div>
     <!-- /.content -->
   </div>

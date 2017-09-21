@@ -5,16 +5,16 @@ var session = require('cookie-session'); // Charge le middleware de sessions
 var bodyParser = require('body-parser'); // Charge le middleware de gestion des paramètres
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 
-
 /* On utilise les sessions */
-app.use(session({secret: 'todotopsecret'}))
+app.use(session({secret: 'todotopsecret'}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
 
 
 
-        .get('/create/decksession', function (req, res) {
+        app.get('/create/decksession', function (req, res) {
             /* S'il n'y a pas de deckList dans la session,
              on en crée une vide sous forme d'array */
 
@@ -24,32 +24,38 @@ app.use(session({secret: 'todotopsecret'}))
             }
 
             
-        })
+        });
 
         /* On ajoute une catre à la list */
-        .post('/add/deckSession/carte', function (req, res) {
-           nameCarte = req.query.name ;
-           imgCarte = req.query.img ;
-           nbrCarte = req.query.nbr ;
-           console.log(nbrCarte+imgCarte+nameCarte);
-            req.session.deckList.push('pikatchu');
-           res.send('sessionOn');
-        })
+        app.post('/add/deckSession/carte', function (req, res) {
+//           nameCarte = req.query.name ;
+//           imgCarte = req.query.img ;
+//           nbrCarte = req.query.nbr ;
+      
+      
+	console.log(req.body);
+        req.session.deckList.push(req.body);
+	 res.redirect('/');
+        
+        
+        
+      
+        });
 
 
 
-        .get('/remove/deckSession', function (req, res) {
+        app.get('/remove/deckSession', function (req, res) {
             delete req.session.deckList;
 
             res.redirect('/');
-        })
+        });
         
         
         
         
-         .get('/cheeck/deckSession', function (req, res) {
+         app.get('/cheeck/deckSession', function (req, res) {
            if (typeof (req.session.deckList) == 'undefined') {
-               res.send('sessionOff')
+               res.send('sessionOff');
                 
             }else{ res.send('sessionOn')}
             

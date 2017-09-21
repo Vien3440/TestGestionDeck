@@ -2,8 +2,8 @@ $app = angular.module('app', []);
 
 $app.controller('form', function ($scope, $http) {
 
-$path = "https://mdmagic.herokuapp.com";
-     // $path = "http://localhost:5000";
+//  $path = "https://mdmagic.herokuapp.com";
+     $path = "http://localhost:5000";
 
     $scope.valueInput = function valueInput() {
 //                            alert($scope.titre);
@@ -54,25 +54,17 @@ $path = "https://mdmagic.herokuapp.com";
 
 
     $scope.addCarteDeckSession = function addCarteDeckSession() {
-      
-        $http({
-            method: 'POST',
-            url: $path + "/add/deckSession/carte",
-            data: {
-                name: "xXx",
-                img: "xXxImg",
-                nbr: "xXxNbr"
-            }
-        })
-                .then(function (response) {
-
-                    alert('ok');
-
-                    $scope.cheeckDeckSession();
-
-                }, function (response) {
- alert('non');
-                });
+   
+//   alert(this.card.name);
+//   alert(this.card.imgid);
+   $scope.$formDeckName = this.card.name;
+   $scope.$formDeckImgid = this.card.imgid;
+//            <input type="text" name="name" id="formDeckName">
+//            <input type="text" name="img" id="formDeckImg">
+//            <input type="number" name="nbr" id="formDeckNbr">
+   
+   
+    
     };
 
 
