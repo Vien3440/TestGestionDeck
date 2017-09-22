@@ -10,7 +10,21 @@ app.use(session({secret: 'todotopsecret'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
-
+        /* On ajoute une catre à la list */
+        app.post('/add/deckSession/carte', function (req, res) {
+//           nameCarte = req.query.name ;
+//           imgCarte = req.query.img ;
+//           nbrCarte = req.query.nbr ;
+      
+      
+	
+        req.session.deckList.push(req.body);
+	
+        console.log(req.body);
+  
+        res.redirect('/');
+      
+        });
 
 
 
@@ -26,21 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
             
         });
 
-        /* On ajoute une catre à la list */
-        app.post('/add/deckSession/carte', function (req, res) {
-//           nameCarte = req.query.name ;
-//           imgCarte = req.query.img ;
-//           nbrCarte = req.query.nbr ;
-      
-      
-	console.log(req.body);
-        req.session.deckList.push(req.body);
-	 res.redirect('/');
-        
-        
-        
-      
-        });
+
 
 
 

@@ -57,8 +57,28 @@ $app.controller('form', function ($scope, $http) {
    
 //   alert(this.card.name);
 //   alert(this.card.imgid);
-   $scope.$formDeckName = this.card.name;
-   $scope.$formDeckImgid = this.card.imgid;
+
+
+
+
+ this.card.nbr = 1;
+  $http({
+  method  : 'POST',
+  url     : '/add/deckSession/carte',
+  data    : $.param(this.card),  // pass in data as strings
+  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+ }).then(function successCallback(response) {
+  
+  }, function errorCallback(response) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+    
+
+
+
+//   $scope.$formDeckName = this.card.name;
+//   $scope.$formDeckImgid = this.card.imgid;
 //            <input type="text" name="name" id="formDeckName">
 //            <input type="text" name="img" id="formDeckImg">
 //            <input type="number" name="nbr" id="formDeckNbr">
