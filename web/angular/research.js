@@ -1,13 +1,15 @@
 $app = angular.module('app', []);
 
-$app.controller('form', function ($scope, $http) {
+
+// Research on api
+
+$app.controller('appController', function ($scope, $http) {
 
 //  $path = "https://mdmagic.herokuapp.com";
-     $path = "http://localhost:5000";
+    $path = "http://localhost:5000";
 
     $scope.valueInput = function valueInput() {
-//                            alert($scope.titre);
-// $scope.cheeckSession();
+
         $http({
             method: 'GET',
             url: 'https://api.magicthegathering.io/v1/cards?name=' + $scope.titre + "&language=french"
@@ -22,26 +24,23 @@ $app.controller('form', function ($scope, $http) {
 
     };
 
+// Editing the view list
     $scope.editListe = function editListe($listCards) {
 
         $arrayNames = [];
 
         angular.forEach($listCards, function (value, key) {
 
-
-
             /*Recherche Fr */
             angular.forEach(value.foreignNames, function (value, key) {
                 boolImg = value.hasOwnProperty('imageUrl');
-                if (value.language === "French" && boolImg === true) {
+                /*Checking card image*/
+                if (value.language === "French" && boolImg === true) {  /* "Future"  Replace the string language with a variable */
 
                     localName = value.name;
                     localImg = value.imageUrl;
 
-
-
                     $arrayNames.push({
-
                         'name': localName,
                         'imgid': localImg
                     });
@@ -52,40 +51,72 @@ $app.controller('form', function ($scope, $http) {
         $scope.cards = $arrayNames;
     };
 
+///Session ////
+
+ $scope.createDeckSession = function createDeckSession() {
+        $scope.cheeckDeckSession();
+        $http({
+            method: 'GET',
+            url: $path + "/create/decksession"
+        })
+
+                .then(function (response) {
+
+                    $scope.cheeckDeckSession();
+
+                }, function (response) {
+
+                });
+    };
 
     $scope.addCarteDeckSession = function addCarteDeckSession() {
-   
-//   alert(this.card.name);
-//   alert(this.card.imgid);
 
 
 
+        this.card.nbr = 1;
+        $http({
+            method: 'POST',
+            url: '/add/deckSession/carte',
+            data: $.param(this.card),
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
- this.card.nbr = 1;
-  $http({
-  method  : 'POST',
-  url     : '/add/deckSession/carte',
-  data    : $.param(this.card),  // pass in data as strings
-  headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
- }).then(function successCallback(response) {
-  
-  }, function errorCallback(response) {
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
-    
+        }).then(function successCallback(response) {
+         
+            
+             $scope.cardsDeck = [];
+//           test = $scope.cardsDeck;
+  $scope.cardsDeck = response.data ;
+        }, function errorCallback(response) {
+             
+        });
 
-
-
-//   $scope.$formDeckName = this.card.name;
-//   $scope.$formDeckImgid = this.card.imgid;
-//            <input type="text" name="name" id="formDeckName">
-//            <input type="text" name="img" id="formDeckImg">
-//            <input type="number" name="nbr" id="formDeckNbr">
-   
-   
-    
     };
+
+
+  $scope.cheeckDeckSession = function cheeckDeckSession() {
+
+        $http({
+            method: 'GET',
+            url: $path + "/get/decksession"
+        })
+                .then(function (response) {
+                    // success
+
+                    $scope.cardsDeck = response.data;
+
+//                alert($scope.$content);
+                }, function (response) {
+                    //error
+
+                });
+    };
+
+   
+
+
+
+
+
 
 
 });

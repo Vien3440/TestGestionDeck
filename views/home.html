@@ -8,160 +8,186 @@
         </form>-->
 <!DOCTYPE html>
 <html ng-app="app">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>MdMagic</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="admin-lte/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="admin-lte/dist/css/AdminLTE.min.css">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>MdMagic</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.6 -->
+        <link rel="stylesheet" href="admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="admin-lte/dist/css/AdminLTE.min.css">
 
-</head>
-<body>
-    
+    </head>
+    <body ng-controller="appController">
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
         <script src="./../angular/research.js"></script>
         <script src="./../angular/sessionNewDeck.js"></script>
 
 
-<div class="wrapper" style="height: auto;">
+        <div class="wrapper" style="height: auto;">
 
-  <header class="main-header">
-    <!-- Logo -->
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MD</b>Magic</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Mon Deck</b>Magics</span>
- 
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+            <header class="main-header">
+                <!-- Logo -->
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>MD</b>Magic</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Mon Deck</b>Magics</span>
 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          
-          
-          
-          
-          
-          
-          
-          
-          <li ng-controller="deckSession" >
-           
-            <button data-ng-init="cheeckDeckSession()"  ng-if=" $content !== 'sessionOn'" ng-click="createDeckSession()">new deck</button>
-       
-          </li>
-     
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-    <div ng-controller="form" >
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar" style="height: auto;">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0qcDhhHLdXK1oDKaAQrK-4pTelSMKj0IVV-fimycLYpcc8N2V">
-        <div>
-            <p>Recherche rapide</p>
-            <p>Entre le nom d'une carte 'Francais'</p>
-        </div>
-        <div>
-      <form  ng-onload="cheeckDeckSession()" >
-            <input type="text" name="input" ng-model="titre" placeholder="Nom de la carte " >
-            <button type="submit" class="btn btn-primary" ng-click="valueInput()">Submit</button>
-        </form>
-        </div>
-      
-      
-      
-      
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="min-height: 420px;">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-      Md Magic
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      </ol>
-    </section>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
 
-    <!-- Main content -->
-    <section class="content">
-      
-      
-      
-      
-      
-        
-      
 
-        
-        
-         <div>
-                 <h3>Resulta Recherche: </h3>
-                 <table class="cards">
-                     <tr>
-                         <th>Action </th>
-                         <th>Nom </th>
-                         <th>Img </th>
-                     </tr>
-                     <tr ng-repeat="card in cards track by $index">
-                         <td><button class="btnAdd" ng-click="addCarteDeckSession()">Ajouter</button></td>
-                         <td id="{{card.name}}" class="cardName" >{{card.name}}</td>
-                         <td><img id="{{card.img}}" class="cardImg" src="{{card.imgid}}" alt="Img Card {{card.name}}"> </td>
-                         
-                     </tr>
-                 </table>
+
+
+
+
+
+
+
+                            <li>
+                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div  >
+                <!-- Left side column. contains the logo and sidebar -->
+                <aside class="main-sidebar">
+                    <!-- sidebar: style can be found in sidebar.less -->
+                    <section class="sidebar" style="height: auto;">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0qcDhhHLdXK1oDKaAQrK-4pTelSMKj0IVV-fimycLYpcc8N2V">
+                        <div>
+                            <p>Recherche rapide</p>
+                            <p>Entre le nom d'une carte 'Francais'</p>
+                        </div>
+                        <div>
+                            <form  ng-onload="cheeckDeckSession()" >
+                                <input type="text" name="input" ng-model="titre" placeholder="Nom de la carte " >
+                                <button type="submit" class="btn btn-primary" ng-click="valueInput()">Submit</button>
+                            </form>
+                        </div>
+
+
+
+
+                    </section>
+                    <!-- /.sidebar -->
+                </aside>
+
+                <!-- Content Wrapper. Contains page content -->
+                <div class="content-wrapper" style="min-height: 420px;">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Md Magic
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                        </ol>
+                    </section>
+
+                    <!-- Main content -->
+                    <section class="content">
+
+
+
+
+
+
+
+
+
+
+                        <div>
+                            <h3>Resulta Recherche: </h3>
+                            <table class="cards">
+                                <tr>
+                                    <th>Action </th>
+                                    <th>Nom </th>
+                                    <th>Img </th>
+                                </tr>
+                                <tr ng-repeat="card in cards track by $index">
+                                    <td><button class="btnAdd" ng-click="addCarteDeckSession()">Ajouter</button></td>
+                                    <td id="{{card.name}}" class="cardName" >{{card.name}}</td>
+                                    <td><img id="{{card.img}}" class="cardImg" src="{{card.imgid}}" alt="Img Card {{card.name}}"> </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+                </div>
+                <!-- /.content -->
             </div>
-       
+            <!-- /.content-wrapper -->
         </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-   </div>
-  <footer class="main-footer">
-  
-  </footer>
+        <footer class="main-footer">
+
+        </footer>
 
 
-  <aside class="control-sidebar control-sidebar-dark">
-
-    
-  </aside>
-
-  <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
+        <aside class="control-sidebar control-sidebar-dark">
 
 
+        </aside>
 
-<script src="admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <div class="control-sidebar-bg"   data-ng-init="cheeckDeckSession()" style="position: fixed; height: auto;">
+            
+            <div class="content-right-bar" data-ng-init="addCarteDeckSession()" >
+                                    <button class="btn btn-primary"   ng-if=" $content !== 'sessionOn'" ng-click="createDeckSession()">new deck</button>
+                                    
+                                       <table class="">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>nbr </th>
+<!--                                    <th>Img </th>-->
+                                </tr>
+                                <tr ng-repeat="card in cardsDeck">
+                                    
+                                    <td  class="cardName" >{{card.name}}</td>
+<!--                                    <td><img class="cardImg" src="{{card.imgid}}" alt="Img Card {{cardsDeck.name}}"> </td>-->
+                                    <td id="{{card.nbr}}" class="cardName" >X {{card.nbr}}</td>
+                                </tr>
+                            </table>
+
+            </div>
+            
+          
+
+            <style>
+               .content-right-bar {
+                    position: relative;
+                    top: 110px;
+                    color: #fff;
+                }
+            </style>
+
+        </div>
 
 
 
-<script src="admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <script src="admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 
 
-<script src="admin-lte/dist/js/app.min.js"></script>
 
-</body>
+        <script src="admin-lte/bootstrap/js/bootstrap.min.js"></script>
+
+
+        <script src="admin-lte/dist/js/app.min.js"></script>
+
+    </body>
 </html>
 

@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 	
         console.log(req.body);
   
-        res.redirect('/');
+        res.send(req.session.deckList);
       
         });
 
@@ -53,13 +53,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
         
         
         
-         app.get('/cheeck/deckSession', function (req, res) {
-           if (typeof (req.session.deckList) == 'undefined') {
-               res.send('sessionOff');
-                
-            }else{ res.send('sessionOn')}
-            
-           
+      
+        
+         app.get('/get/deckSession', function (req, res) {
+          
+    
         });
         
         
