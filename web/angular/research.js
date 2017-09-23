@@ -6,7 +6,7 @@ $app = angular.module('app', []);
 $app.controller('appController', function ($scope, $http) {
 
   $path = "https://mdmagic.herokuapp.com";
- //   $path = "http://localhost:5000";
+  // $path = "http://localhost:5000";
 
     $scope.valueInput = function valueInput() {
 
@@ -54,7 +54,7 @@ $app.controller('appController', function ($scope, $http) {
 ///Session ////
 
  $scope.createDeckSession = function createDeckSession() {
-        $scope.cheeckDeckSession();
+       
         $http({
             method: 'GET',
             url: $path + "/create/decksession"
@@ -62,7 +62,7 @@ $app.controller('appController', function ($scope, $http) {
 
                 .then(function (response) {
 
-                    $scope.cheeckDeckSession();
+                   
 
                 }, function (response) {
 
@@ -93,14 +93,14 @@ $app.controller('appController', function ($scope, $http) {
     };
 
 
-  $scope.cheeckDeckSession = function cheeckDeckSession() {
+  $scope.getDeckSession = function getDeckSession() {
 
         $http({
             method: 'GET',
-            url: $path + "/get/decksession"
+            url: "/get/decksession"
         })
                 .then(function (response) {
-                    // success
+                  
 
                     $scope.cardsDeck = response.data;
 
@@ -112,11 +112,7 @@ $app.controller('appController', function ($scope, $http) {
     };
 
    
-
-
-
-
-
+/**Creat views for pdf**/
 
 
 });

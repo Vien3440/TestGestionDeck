@@ -56,10 +56,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
       
         
          app.get('/get/deckSession', function (req, res) {
-          
-    
+             if(req.session.deckList){
+          res.send(req.session.deckList);
+      }
         });
         
+       
         
         
 app.get('/', function (req, res) {
