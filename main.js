@@ -75,7 +75,6 @@ app.get('/', function (req, res) {
 
 /**page html template pdf **/
 
-
 app.get('/get/deckSession/templatePdf', function (req, res) {
     console.log(req.session.deckList);
 //  Pour servir des fichiers statiques
@@ -84,5 +83,22 @@ app.get('/get/deckSession/templatePdf', function (req, res) {
     res.sendFile(__dirname + '/views/templateDeck.html');
 
 });
+
+
+//app.get('/get/deckSession/templatePdf', function (req, res) {
+//
+//var pdf = require('pdfkit');
+//var fs = require('fs');
+//
+//var myDoc = new pdf;
+//
+//myDoc.pipe(fs.createWriteStream('node.pdf'));
+//
+//myDoc.image('http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=287696&type=card');
+//
+//});
+
+
+
 app.listen(process.env.PORT || 5000) ;
 

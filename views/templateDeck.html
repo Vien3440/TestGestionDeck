@@ -22,15 +22,20 @@ and open the template in the editor.
 
 
 
-          
-                <img ng-repeat="card in cardsDeck" class="cardImgTemplatePdf" src="{{card.imgid}}" alt="Img Card {{cardsDeck.name}}">
-           
+
+            <img ng-repeat="card in cardsDeck" class="cardImgTemplatePdf" src="{{card.imgid}}" alt="Img Card {{cardsDeck.name}}">
+
 
 
 
 
         </div>
-
+        <style>
+            .cardImgTemplatePdf {
+                height: 88mm !important;
+                width: 61mm !important;
+            }
+        </style>
     </body>
 
 </html>
