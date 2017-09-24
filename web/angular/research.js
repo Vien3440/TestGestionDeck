@@ -5,8 +5,8 @@ $app = angular.module('app', []);
 
 $app.controller('appController', function ($scope, $http) {
 
-  $path = "https://mdmagic.herokuapp.com";
-  // $path = "http://localhost:5000";
+//  $path = "https://mdmagic.herokuapp.com";
+  $path = "http://localhost:5000";
 
     $scope.valueInput = function valueInput() {
 

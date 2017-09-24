@@ -73,5 +73,16 @@ app.get('/', function (req, res) {
 
 });
 
+/**page html template pdf **/
+
+
+app.get('/get/deckSession/templatePdf', function (req, res) {
+    console.log(req.session.deckList);
+//  Pour servir des fichiers statiques
+    app.use(express.static('web'));
+    // affiche la vue  
+    res.sendFile(__dirname + '/views/templateDeck.html');
+
+});
 app.listen(process.env.PORT || 5000) ;
 

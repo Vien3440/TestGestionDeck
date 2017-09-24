@@ -22,7 +22,7 @@
 
     </head>
     <body ng-controller="appController">
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
         <script src="./../angular/research.js"></script>
@@ -145,30 +145,32 @@
         </aside>
 
         <div class="control-sidebar-bg"   style="position: fixed; height: auto;">
-            
+
             <div class="content-right-bar" data-ng-init="getDeckSession()" >
-                                    <button class="btn btn-primary"   ng-click="createDeckSession()">new deck</button>
-                                    <button class="btn btn-danger"   ng-click="createDeckSession()">go pdf</button>
-                                       <table class="">
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>nbr </th>
-<!--                                    <th>Img </th>-->
-                                </tr>
-                                <tr ng-repeat="card in cardsDeck">
-                                    
-                                    <td  class="cardName" >{{card.name}}</td>
-<!--                                    <td><img class="cardImg" src="{{card.imgid}}" alt="Img Card {{cardsDeck.name}}"> </td>-->
-                                    <td id="{{card.nbr}}" class="cardName" >X {{card.nbr}}</td>
-                                </tr>
-                            </table>
+                <button class="btn btn-primary"   ng-click="createDeckSession()">new deck</button>
+                <form action="/get/deckSession/templatePdf">
+                    <input class="btn btn-danger" type="submit" value="Go to Pdf" />
+                </form>
+                <table class="">
+                    <tr>
+                        <th>Nom</th>
+                        <th>nbr </th>
+                        <!--                                    <th>Img </th>-->
+                    </tr>
+                    <tr ng-repeat="card in cardsDeck">
+
+                        <td  class="cardName" >{{card.name}}</td>
+                        <!--                                    <td><img class="cardImg" src="{{card.imgid}}" alt="Img Card {{cardsDeck.name}}"> </td>-->
+                        <td id="{{card.nbr}}" class="cardName" >X {{card.nbr}}</td>
+                    </tr>
+                </table>
 
             </div>
-            
-          
+
+
 
             <style>
-               .content-right-bar {
+                .content-right-bar {
                     position: relative;
                     top: 110px;
                     color: #fff;
